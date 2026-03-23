@@ -55,9 +55,10 @@ Docker et Docker Compose installés.
 APP_PORT
 ELASTIC_PORT
 KIBANA_PORT
+LOGSTASH_PORT
 ```
 
-> Par défaut les ports sont respectivement 8000, 9200 et 5601
+> Par défaut les ports sont respectivement 8000, 9200, 5601 et 5000
 
 ### Lancer l'ensemble de la stack
 
@@ -86,7 +87,7 @@ curl -X POST "http://localhost:<APP_PORT>/withdraw" -H "Content-Type: applicatio
 
 Le pipeline Logstash utilise une logique de filtrage par motifs :
 
-    Input : gelf sur le port 5000 (en dur).
+    Input : gelf sur le port Logstash.
 
     Filter :
 

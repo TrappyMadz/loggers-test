@@ -11,7 +11,7 @@ services:
     logging:
       driver: gelf
       options:
-        gelf-address: "udp://127.0.0.1:5000"
+        gelf-address: "udp://127.0.0.1:${LOGSTASH_PORT}"
     networks:
       - elk_network
     depends_on:
@@ -59,7 +59,7 @@ services:
       - ./logstash.conf:/usr/share/logstash/pipeline/logstash.conf:ro
     # On ouvre le port 5000 en UDP pour recevoir les logs de l'app
     ports:
-      - "5000:5000/udp"
+      - "${LOGSTASH_PORT}:5000/udp"
     depends_on:
       - elasticsearch
       - setup-elastic
